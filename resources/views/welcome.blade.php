@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <img src="/banner/life.png" class="img-fluid" style="border:1px solid #ccc;">
+            <img src="/laravel/banner/life.png" class="img-fluid" style="border:1px solid #ccc;">
         </div>
         <div class="col-md-6">
             <h2>Create an account & Book your Coach</h2>
