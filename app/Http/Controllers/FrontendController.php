@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PrescriptionController;
 
 class FrontendController extends Controller
 {
@@ -79,11 +80,13 @@ class FrontendController extends Controller
             'name'=>auth()->user()->name,
             'time'=>$request->time,
             'date'=>$request->date,
-            'coachName' => $coachName->name
+            'coachName' => $coachName->name,
+            'skype'=>auth()->user()->skype
 
         ];
         try{
            \Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+           \Mail::to($coachName->user()->email)->send(new AppointmentMail($mailData));
 
         }catch(\Exception $e){
 
@@ -108,6 +111,12 @@ class FrontendController extends Controller
         return view('booking.index',compact('appointments'));
     }
 
+    public function myPrescription()
+    {
+        $prescriptions = Prescription::where('user_id',auth()->user()->id)->get();
+        return view('my-prescription',compact('prescriptions'));
+    }
+    
     public function coachToday(Request $request)
     {
         $coaches = Appointment::with('coach')->whereDate('date',date('Y-m-d'))->get();

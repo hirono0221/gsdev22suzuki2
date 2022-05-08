@@ -71,6 +71,15 @@
                             </span>
                         @enderror
 				</div>
+				<div class="col-lg-6">
+					<label for="">Skype ID</label>
+					<input type="text" name="skype" class="form-control @error('skype') is-invalid @enderror" placeholder="">
+                     @error('skype')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+				</div>
 			</div>
 
 			<div class="row">

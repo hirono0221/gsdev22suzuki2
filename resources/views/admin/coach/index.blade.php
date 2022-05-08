@@ -46,6 +46,7 @@
                             <th>Name</th>
                             <th class="nosort">Avatar</th>
                             <th>Email</th>
+                            <th>Skype</th>
                             <th>Address</th>
                             <th>Phone number</th>
                             <th>Department</th>
@@ -60,6 +61,7 @@
                         <td>{{$user->name}}</td>
                         <td><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt=""></td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->skype}}</td>
                         <td>{{$user->address}}</td>
                         <td>{{$user->phone_number}}</td>
                         <td>{{$user->department}}</td>

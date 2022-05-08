@@ -12,6 +12,7 @@
             <p class="badge badge-pill badge-dark">Role:{{$user->role->name}}</p>
             <p>Name:{{$user->name}}</p>
             <p>Email:{{$user->email}}</p>
+            <p>Skype:{{$user->skype}}</p>            
             <p>Address:{{$user->address}}</p>
             <p>Phone number:{{$user->phone_number}}</p>
             <p>Department:{{$user->department}}</p>

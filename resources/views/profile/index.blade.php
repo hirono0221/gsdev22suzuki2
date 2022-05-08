@@ -4,7 +4,7 @@
 <div class="container">
     @if(Session::has('message'))
         <div class="alert alert-success">{{Session::get('message')}}</div>
-        @endif
+    @endif
     <div class="row ">
         
         <div class="col-md-3">
@@ -13,19 +13,21 @@
 
                 <div class="card-body">
                     <p>Name: {{auth()->user()->name}}</p>
-                    <p>Name: {{auth()->user()->email}}</p>
-                    <p>Name: {{auth()->user()->address}}</p>
-                    <p>Name: {{auth()->user()->phone_number}}</p>
+                    <p>e-mail: {{auth()->user()->email}}</p>
+                    <p>skype-ID: {{auth()->user()->skype}}</p>                    
+                    <p>address: {{auth()->user()->address}}</p>
+                    <p>phone-number: {{auth()->user()->phone_number}}</p>
                     <p>Bio: {{auth()->user()->description}}</p>
-
                 </div>
+                
             </div>
         </div>
+        
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Update Profile</div>
 
-                <div class="card-body">
+                  <div class="card-body">
                     <form action="{{route('profile.store')}}" method="post">@csrf
                         <div class="form-group">
                             <label>Name</label>
@@ -34,35 +36,41 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            
+                            @enderror
                         </div>
+                        
                         <div class="form-group">
-                            <label>Address</label>
-                            <input type="text" name="address" class="form-control" value="{{auth()->user()->address}}">
-                            
+                            <label>Skype ID</label>
+                            <input type="text" name="skype" class="form-control @error('skype') is-invalid @enderror" value="{{auth()->user()->skype}}">
+                            @error('skype')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Adress</label>
+                            <input type="text" name="Address" class="form-control" value="{{auth()->user()->address}}">
+                        </div>
+                        
                         <div class="form-group">
                             <label>Phone number</label>
                             <input type="text" name="phone_number" class="form-control" value="{{auth()->user()->phone_number}}">
-                            
                         </div>
+                        
                         <div class="form-group">
                             <label>Bio</label>
                             <textarea name="description" class="form-control">{{auth()->user()->description}}</textarea>
-                            
-                        </div>
-                        <div class="form-group">
-                            
-                            <button class="btn btn-primary" type="submit">Update</button>
-                            
-                        </div>
-                            
                         </div>
                         
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
+                            
                     </form>
-                    
-                </div>
+                  </div>
+                  
             </div>
         </div>
         <div class="col-md-3">
@@ -79,10 +87,10 @@
                     <input type="file" name="file" class="form-control" required="">
                     <br>
                      @error('file')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                     @enderror
                     <button type="submit" class="btn btn-primary">Update</button>
                     
                 </div>

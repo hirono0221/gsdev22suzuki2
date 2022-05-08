@@ -5,27 +5,22 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header"> 
-
                      Appointment ({{$bookings->count()}})
-                 </div>
+                </div>
+                
                 <form action="{{route('client')}}" method="GET">
-
                  <div class="card-header">
                      Filter:
-                     <div class="row">
-                     <div class="col-md-10">
-                         <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
-                     </div>
-                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                         
-                     </div>
+                    <div class="row">
+                         <div class="col-md-10">
+                             <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
+                         </div>
+                         <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                         </div>
+                    </div>
                  </div>
-                 
-                 </div>
-                 </form>
-
-                
+                </form>
 
                 <div class="card-body">
                     <table class="table table-striped">
@@ -36,8 +31,8 @@
                           <th scope="col">Date</th>
                           <th scope="col">Client</th>
                           <th scope="col">Email</th>
+                          <th scope="col">Skype</th>                          
                           <th scope="col">Phone</th>
-
                           <th scope="col">Time</th>
                           <th scope="col">Coach</th>
                           <th scope="col">Status</th>
@@ -52,8 +47,8 @@
                           <td>{{$booking->date}}</td>
                           <td>{{$booking->user->name}}</td>
                           <td>{{$booking->user->email}}</td>
+                          <td>{{$booking->user->skype}}</td>                          
                           <td>{{$booking->user->phone_number}}</td>
-
                           <td>{{$booking->time}}</td>
                           <td>{{$booking->coach->name}}</td>
                           <td>

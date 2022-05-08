@@ -41,6 +41,17 @@
                                 </div>
                                 @endif
                                 
+                                @if(auth()->check()&& auth()->user()->role->name === 'coach')
+                                   <div class="nav-item has-sub">
+                                    <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Clients</span> <span class="badge badge-danger"></span></a>
+                                    <div class="submenu-content">
+                                        <a href="{{route('clients.today')}}" class="menu-item">Clients(today)</a>
+                                        <a href="{{route('prescribed.clients')}}" class="menu-item">All clients(prescription)</a>
+                                       
+                                    </div>
+                                </div>
+                                @endif   
+                                
                                 @if(auth()->check()&& auth()->user()->role->name === 'admin')
                                 <div class="nav-item has-sub">
                                     <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Client Appointment</span> <span class="badge badge-danger"></span></a>

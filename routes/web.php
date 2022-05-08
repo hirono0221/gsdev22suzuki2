@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientlistController;
+use App\Http\Controllers\PrescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::group(['middleware'=>['auth','client']],function(){
 	Route::get('/user-profile',[ProfileController::class, 'index']);
 	Route::post('/user-profile',[ProfileController::class, 'store'])->name('profile.store');
     Route::post('/profile-pic',[ProfileController::class, 'profilePic'])->name('profile.pic');
-	
+	Route::get('/my-prescription',[FrontendController::class, 'myPrescription'])->name('my.prescription');	
 });
 
 
@@ -62,5 +63,11 @@ Route::group(['middleware'=>['auth','coach']],function(){
     Route::resource('appointment', AppointmentController::class);
 	Route::post('/appointment/check',[AppointmentController::class, 'check'])->name('appointment.check');
 	Route::post('/appointment/update',[AppointmentController::class, 'updateTime'])->name('update');
+	Route::get('client-today',[PrescriptionController::class, 'index'])->name('clients.today');
+
+	Route::post('/prescription',[PrescriptionController::class, 'store'])->name('prescription');
+
+	Route::get('/prescription/{userId}/{date}',[PrescriptionController::class, 'show'])->name('prescription.show');
+	Route::get('/prescribed-clients',[PrescriptionController::class, 'clientsFromPrescription'])->name('prescribed.clients');
 
 });

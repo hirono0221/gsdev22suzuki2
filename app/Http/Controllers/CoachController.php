@@ -126,6 +126,7 @@ class CoachController extends Controller
             'name'=>'required',
             'email'=>'required|unique:users',
             'password'=>'required|min:6|max:25',
+            'skype'=>'required',            
             'education'=>'required',
             'address'=>'required',
             'department'=>'required',
@@ -140,7 +141,7 @@ class CoachController extends Controller
         return  $this->validate($request,[
             'name'=>'required',
             'email'=>'required|unique:users,email,'.$id,
-          
+            'skype'=>'required',          
             'education'=>'required',
             'address'=>'required',
             'department'=>'required',

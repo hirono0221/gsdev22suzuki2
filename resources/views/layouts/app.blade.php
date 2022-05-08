@@ -60,6 +60,11 @@
                                 <a class="nav-link" href="{{ route('my.booking') }}" style="color: #fff; font-size:16px; font-weight: bold;">{{ __('My Booking') }}</a>
                             </li>
                         @endif
+                        @if(auth()->check()&& auth()->user()->role->name === 'client')
+                            <li class="nav-item">
+                                <a style="color: #fff; font-size:16px; font-weight: bold;" class="nav-link" href="{{ route('my.prescription') }}" style="color: #fff; font-size:16px; font-weight: bold;">{{ __('My Prescriptions') }}</a>
+                            </li>
+                        @endif
 
                         <!-- Authentication Links -->
                         @guest
@@ -78,7 +83,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                     @if(auth()->check()&& auth()->user()->role->name === 'patient')
+                                     @if(auth()->check()&& auth()->user()->role->name === 'client')
                                     <a href="{{url('user-profile')}}"  class="dropdown-item"style="color: #000; font-size:16px; font-weight: bold;">Profile</a>
                                     @else 
                                      <a href="{{url('dashboard')}}"  class="dropdown-item">Dashboard</a>
@@ -111,19 +116,19 @@
  <script>
     var dateToday = new Date();
   $( function() {
-    $("#datepicker").datepicker({
-        dateFormat:"yy-mm-dd",
-        showButtonPanel:true,
-        numberOfMonths:2,
-        minDate:dateToday,
-    });
-    
-    $('#dropdown-link').on("click", function(){
-console.log(123)
-   $(this).next().toggle(); 
-});
+        $("#datepicker").datepicker({
+            dateFormat:"yy-mm-dd",
+            showButtonPanel:true,
+            numberOfMonths:2,
+            minDate:dateToday,
+        });
+        
+        $('#dropdown-link').on("click", function(){
+         console.log(123)
+        $(this).next().toggle(); 
+        });
 
-});
+  });
 
 
 

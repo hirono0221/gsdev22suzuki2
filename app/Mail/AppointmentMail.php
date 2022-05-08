@@ -10,7 +10,7 @@ use App\Http\Controllers\FrontendController;
 
 use App\Http\Controllers\AppointmentController;
 
-class AppointMail extends Mailable
+class AppointmentMail extends Mailable
 {
     use Queueable, SerializesModels;
 

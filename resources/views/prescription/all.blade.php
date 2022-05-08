@@ -2,20 +2,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
+              
                 <div class="card-header"> 
-
-                     Appointment ({{$bookings->count()}})
-                 </div>
-                 
-                 
-                 
+                     Appointment ({{$clients->count()}})
+                </div>
 
                 <div class="card-body">
                     <table class="table table-striped">
                       <thead>
-                         <tr>
+                        <tr>
                           <th scope="col">#</th>
                           <th scope="col">Photo</th>
                           <th scope="col">Date</th>
@@ -26,27 +23,37 @@
                           <th scope="col">Time</th>
                           <th scope="col">Coach</th>
                           <th scope="col">Status</th>
+                          <th scope="col">Prescription</th>                          
                         </tr>
                       </thead>
                       <tbody>
-                        @forelse($bookings as $key=>$booking)
+                        @forelse($clients as $key=>$client)
                         <tr>
                           <th scope="row">{{$key+1}}</th>
-                          <td><img src="/profile/{{$booking->user->image}}" width="80" style="border-radius: 50%;">
+                          <td><img src="/profile/{{$client->user->image}}" width="80" style="border-radius: 50%;">
                           </td>
-                          <td>{{$booking->date}}</td>
-                          <td>{{$booking->user->name}}</td>
-                          <td>{{$booking->user->email}}</td>
-                          <td>{{$booking->user->skype}}</td>
-                          <td>{{$booking->user->phone_number}}</td>
-                          <td>{{$booking->time}}</td>
-                          <td>{{$booking->coach->name}}</td>
+                          
                           <td>
-                              @if($booking->status==0)
-                              <a href="{{route('update.status',[$booking->id])}}"><button class="btn btn-primary"> Pending</button></a>
-                              @else 
-                               <a href="{{route('update.status',[$booking->id])}}"><button class="btn btn-success"> Cheked</button></a>
-                              @endif
+                          </td>
+                          
+                          <td>{{$client->user->name}}</td>
+                          <td>{{$client->user->email}}</td>
+                          <td>{{$client->user->skype}}</td>                          
+                          <td>{{$client->user->phone_number}}</td>
+                          <td>{{$client->time}}</td>
+                          <td>{{$client->coach->name}}</td>
+                          <td>
+                            @if($client->status==1)
+                             checked
+                            @endif
+                          </td>
+                          <td>
+                              <!-- Button trigger modal -->
+              
+                            <a href="{{route('prescription.show',[$client->user_id,$client->date])}}" class="btn btn-secondary">View prescription</a>
+                  
+
+                               
                           </td>
                         </tr>
                         @empty
@@ -56,9 +63,9 @@
                       </tbody>
                     </table>
                 </div>
-                {{$bookings->links()}}
             </div>
         </div>
     </div>
 </div>
+
 @endsection

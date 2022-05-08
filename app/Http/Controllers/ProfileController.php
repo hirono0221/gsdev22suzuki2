@@ -17,6 +17,7 @@ class ProfileController extends Controller
     {
     	$this->validate($request,[
     		'name'=>'required',
+    		'skype'=>'required'
 
     	]);
     	User::where('id',auth()->user()->id)

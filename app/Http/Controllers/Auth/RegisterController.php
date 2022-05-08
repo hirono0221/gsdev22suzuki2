@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Role;
 
+use App\Models\Prescription;
+
 class RegisterController extends Controller
 {
     /*
